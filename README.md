@@ -1,6 +1,6 @@
 # Flutter Share Plugin
 
-A Flutter plugin for both IOS and Android that provides ability to share plain text, links and local files. Multiple file share is also supported.
+A Flutter plugin for both iOS and Android that provides ability to share plain text, links and local files. Multiple file share is also supported.
 
 # Screenshots
 
