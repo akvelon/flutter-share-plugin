@@ -46,9 +46,10 @@ class _MyAppState extends State<MyApp> {
                 RaisedButton(
                   onPressed: () async {
                     PickedFile f =
-                    await picker.getImage(source: ImageSource.gallery);
+                        await picker.getImage(source: ImageSource.gallery);
                     if (f != null) {
-                      AkvelonFlutterSharePlugin.shareSingle(f.path, ShareType.IMAGE,
+                      AkvelonFlutterSharePlugin.shareSingle(
+                          f.path, ShareType.IMAGE,
                           text: "share image text",
                           subject: "share image subject");
                     }
@@ -58,7 +59,7 @@ class _MyAppState extends State<MyApp> {
                 RaisedButton(
                   onPressed: () async {
                     PickedFile f =
-                    await picker.getVideo(source: ImageSource.gallery);
+                        await picker.getVideo(source: ImageSource.gallery);
                     if (f != null) {
                       AkvelonFlutterSharePlugin.shareSingle(
                         f.path,
@@ -114,7 +115,7 @@ class _MyAppState extends State<MyApp> {
     var imageList = List<String>();
     for (var asset in assetList) {
       String path =
-      await _writeByteToImageFile(await asset.getByteData(quality: 30));
+          await _writeByteToImageFile(await asset.getByteData(quality: 30));
       imageList.add(path);
     }
     AkvelonFlutterSharePlugin.shareMultiple(
@@ -125,6 +126,7 @@ class _MyAppState extends State<MyApp> {
     );
   }
 
+  ///write image byte data into file
   Future<String> _writeByteToImageFile(ByteData byteData) async {
     Directory dir = Platform.isAndroid
         ? await getExternalStorageDirectory()

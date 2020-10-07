@@ -1,3 +1,3 @@
-## 0.0.1
+## 1.0.3
 
-* TODO: Describe initial release.
+* License file updated.

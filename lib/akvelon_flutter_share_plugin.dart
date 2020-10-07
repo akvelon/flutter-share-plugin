@@ -2,8 +2,10 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 
+/// all of the available entity types for share
 enum ShareType { IMAGE, VIDEO, PDF, FILE }
 
+/// extension for ShareType to determine which method should be invoked
 extension ShareTypeExtension on ShareType {
   String get method {
     switch (this) {
@@ -21,11 +23,14 @@ extension ShareTypeExtension on ShareType {
   }
 }
 
+///entry point to channel Flutter API calls to platform specific methods
 class AkvelonFlutterSharePlugin {
   static const MethodChannel _channel =
-  const MethodChannel('flutter_share_plugin');
+      const MethodChannel('flutter_share_plugin');
 
-  static Future<void> shareText(String text, {String title, String subject, String url}) {
+  ///method for plain text share
+  static Future<void> shareText(String text,
+      {String title, String subject, String url}) {
     assert(text != null && text.isNotEmpty);
     final Map<String, dynamic> params = <String, dynamic>{
       'text': text,
@@ -36,6 +41,7 @@ class AkvelonFlutterSharePlugin {
     return _channel.invokeMethod('share_text', params);
   }
 
+  ///method for single file share
   static Future<void> shareSingle(String item, ShareType type,
       {String text, String subject}) {
     assert(item != null && item.isNotEmpty);
@@ -43,12 +49,14 @@ class AkvelonFlutterSharePlugin {
     return _invokeShare(items, type, subject: subject, text: text);
   }
 
+  ///method for sharing multiple files
   static Future<void> shareMultiple(List<String> items, ShareType type,
       {String text, String subject}) {
     assert(items != null && items.isNotEmpty);
     return _invokeShare(items, type, subject: subject, text: text);
   }
 
+  ///channel method for calling determined native platform method
   static Future<void> _invokeShare(List<String> items, ShareType type,
       {String text, String subject}) {
     assert(items != null && items.isNotEmpty);

@@ -1,6 +1,6 @@
 name: akvelon_flutter_share_plugin
 description: A Flutter plugin to share text, media and files from your Flutter app via the platform's share dialog.
-version: 1.0.1
+version: 1.0.4
 homepage: https://github.com/akvelon/flutter-share-plugin
 
 environment:
